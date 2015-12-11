@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>list filter</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <!-- endbuild -->
+
+    <link href="/bower_components/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    
+    <div class="container">
+      <div class="header">
+        <h3>list filter</h3>
+      </div>
+
+
+      <div class="row marketing">
+        <select name="group-selector" id="" class="migros-selector">
+          <optgroup label="Group 1">
+            <option value="1.1">Option 1.1</option>
+          </optgroup> 
+          <optgroup label="Group 2">
+            <option>Option 2.1</option>
+            <option>Option 2.2</option>
+          </optgroup>
+          <optgroup label="Group 3" disabled>
+            <option>Option 3.1</option>
+            <option>Option 3.2</option>
+            <option>Option 3.3</option>
+          </optgroup>          
+          <option value="AAA">AAA</option>
+          <option value="BBBB">BBBB</option>
+          <option value="CCCC">ACCCC/<option>
+          </select>
+        </div>
+
+      <input type="text" class="list-filter">
+      <input type="text" name="select-box" class="select-box">
+      <ul class="list-items">
+        <li><a href="#" data-value="1">Link xx</a></li>
+        <li><a href="#" data-value="2">Stefan</a></li>
+        <li><a href="#" data-value="3">Schwarzwald</a></li>
+        <li><a href="#" data-value="4">Link</a></li>
+      </ul>
+
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      </div>
+    </div>
+    
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    
+    <!-- build:js(.) scripts/plugins.js -->
+    <!-- endbuild -->
+    
+    <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/jquery-searcher/dist/jquery.searcher.min.js"></script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+  </body>
+</html>
