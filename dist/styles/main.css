@@ -1,1 +1,1 @@
-.migros-selector .selectable:hover{color:red}.migros-selector .group-label{color:#aaa}.migros-selector .selected{font-weight:700}
+.migros-selector{border:1px solid #ccc}.migros-selector input.group-selector-filter{width:100%;padding-right:0;border-radius:0}.migros-selector .selectable:hover{background-color:#eee}.migros-selector .group-label{color:#aaa}.migros-selector .selected{font-weight:700;background-color:#e8e8e8}
