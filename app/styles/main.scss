@@ -1,8 +1,17 @@
 
+
 .migros-selector {
   .selectable:hover {
     color: red;
   } 
+
+  .group-label {
+    color: #aaa;
+  }
+
+	.selected {
+		font-weight: bold;
+	}
 }
 
 

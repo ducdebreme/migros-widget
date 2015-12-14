@@ -1,44 +1,73 @@
+/*
+ * migrosWidget jQuery plugin
+ *
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * http://odyniec.net/projects/imgareaselect/https://github.com/ducdebreme/migros-widget
+ *
+ */
+(function ($) {
 
-var $selector = $('.migros-selector-behavior');
-var name = $selector.attr('name');
+  $.fn.migrosWidget = function () {
 
-var $filter_field = $('<input type="text">').attr('class', name + '-filter');
-var $hidden_field = $('<input type="hidden">').attr('name', name);
-var $new_list = $('<ul class="list-items unstyled"></ul>');
+    return this.each(attachMigrosWidget);
 
-var process_elements = function() {
-	var label, value, $this = $(this);
-		label = $this.text();
-		value = $this.val() || label;
+    function attachMigrosWidget() {
+      var $selector = $(this),
+        name = $selector.attr('name'),
+        $filter_field = $('<input type="text">').attr('class', name + '-filter'),
+        $hidden_field = $('<input type="hidden">').attr('name', name),
+        $new_list = $('<ul class="list-items unstyled"></ul>');
 
-	if($this.is("option")) {
-		$('<li data-value="' + value + '" class="selectable">' + label + '</li>').appendTo($new_list);
-	} else if($this.is("optgroup")) {
-		$('<li>' + $(this).attr('label') + '</li>').appendTo($new_list);
-		$this.children().each(process_elements);
-	}
-}
-$selector.children().each(process_elements);
+      // reformat from html <select> element into the html list format
+      var process_elements = function () {
+        var label, value, $this = $(this);
+        label = $this.text();
+        value = $this.val() || label;
 
-var $wrapper = $('<div class="migros-selector"></div>').append($filter_field, $hidden_field, $new_list);
+        if ($this.is("option")) {
+          $('<li data-value="' + value + '" class="selectable">' + label + '</li>').appendTo($new_list);
+        }
+        else {
+          if ($this.is("optgroup")) {
+            $('<li class="group-label">' + $(this).attr('label') + '</li>').appendTo($new_list);
+            $this.children().each(process_elements);
+          }
+        }
+      };
+      $selector.children().each(process_elements);
 
-// insert the new content
-$selector.replaceWith($wrapper);
+      var $wrapper = $('<div class="migros-selector"></div>').append($filter_field, $hidden_field, $new_list);
 
-// logic for hiding / selecting
-var $item_container = $(".list-items", $wrapper);
-var $selectbox = $(".group-selector-filter", $wrapper);
+      // insert the new widget
+      $selector.replaceWith($wrapper);
 
-$item_container.searcher({
-    inputSelector: ".group-selector-filter",
-    itemSelector: "li",
-    textSelector: "a"
-});
+      // logic for hiding / selecting
+      var $item_container = $(".list-items", $wrapper);
 
-$(".selectable", $item_container).click(function(){
-	var val = $(this).data('value');
-	console.log(val);
-	$selectbox.val(val);
-})
+      $item_container.searcher({
+        inputSelector: "." + name + "-filter",
+        itemSelector: "li",
+        textSelector: ""
+      });
+
+      // click handler
+      $(".selectable", $item_container).click(function () {
+
+        $('.selected', $item_container).removeClass('selected');
+        $(this).addClass('selected');
+
+        // set value
+        var val = $(this).data('value');
+        $hidden_field.val(val);
+      });
+
+    } // end of attachMigrosWidget
+  };
+
+}(jQuery));
+
+
 
 
