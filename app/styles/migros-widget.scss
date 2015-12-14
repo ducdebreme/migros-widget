@@ -1,0 +1,27 @@
+
+
+.migros-selector {
+  border: 1px solid #ccc;
+
+  input.group-selector-filter {
+    width: 100%;
+    padding-right: 0;
+    border-radius: 0;
+  }
+
+  .selectable:hover {
+    background-color: #eee;
+  }
+
+  .group-label {
+    color: #aaa;
+  }
+
+  .selected {
+    font-weight: bold;
+    background-color: #e8e8e8;
+  }
+}
+
+
+
